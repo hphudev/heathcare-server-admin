@@ -69,7 +69,7 @@ class TestController extends Controller
         $drug_group_id = $request->id;
         $name = $request->name;
         $drugs = DB::table('thuoc')
-            ->selectRaw('thuoc.*')
+            ->selectRaw('thuoc.*, nhomthuoc.TenNhomThuoc')
             ->join('nhomthuoc', 'thuoc.drug_group_id', '=', 'nhomthuoc.id')
             ->whereRaw('nhomthuoc.TenNhomThuoc like ?', ['%' . $drug_group_id . '%'])
             ->whereRaw('thuoc.TenThuoc like ?', ['%' . $name . '%'])
