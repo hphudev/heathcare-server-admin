@@ -21,7 +21,7 @@ class DrugTable extends Migration
             $table->date('HanSuDung');
             $table->bigInteger('GiaNhap');
             $table->bigInteger('GiaBan');
-            $table->double('ChietKhau');
+            $table->integer('ChietKhau');
             $table->bigInteger('product_unit_id');
             $table->bigInteger('producer_unit_id');
             $table->string('MoTa');

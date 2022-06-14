@@ -48,13 +48,13 @@ class Receipt extends Model
         return $this->hasOne(ShippingDetail::class);
     }
 
-    public static function boot()
-    {
-        parent::boot();
-        parent::deleting(function ($receipt) { // before delete() method call this
-            $receipt->receiptdetail()->delete();
-            $receipt->shippingdetail()->delete();
-            // do the rest of the cleanup...
-        });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     parent::deleting(function ($receipt) { // before delete() method call this
+    //         $receipt->receiptdetail()->delete();
+    //         $receipt->shippingdetail()->delete();
+    //         // do the rest of the cleanup...
+    //     });
+    // }
 }

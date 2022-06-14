@@ -29,3 +29,5 @@ Route::post('/drugs/get-all-drugs', [TestController::class, 'getAllDrugs']);
 Route::post('/drugs/get-drugs-with-drug-groups', [TestController::class, 'getDrugsWithDrugGroup']);
 Route::post('/drugs/get-top-four-new-drugs', [TestController::class, 'getTopFourNewDrugs']);
 Route::post('/user/get-user', [TestController::class, 'getUser']);
+Route::post('/user/register-account', [TestController::class, 'registerAccount']);
+Route::post('/drug/get-drug-by-id', [TestController::class, 'getDrugByID']);

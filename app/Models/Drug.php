@@ -57,5 +57,12 @@ class Drug extends Model
         return $this->belongsTo(ReceiptDetail::class);
     }
 
-
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     parent::deleting(function ($drug) { // before delete() method call this
+    //         $drug->detailbill()->delete();
+    //         $drug->shippingdetail()->delete();
+    //     });
+    // }
 }

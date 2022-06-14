@@ -27,7 +27,8 @@ class UserController extends AdminController
         $grid = new Grid(new User());
 
         $grid->column('id', __('ID'))->sortable();
-        $grid->column('name', __('Name'))->sortable();
+        $grid->column('first_name', __('First name'))->sortable();
+        $grid->column('last_name', __('Last name'))->sortable();
         $grid->column('province', __('Province'))->sortable();
         $grid->column('district', __('District'))->sortable();
         $grid->column('ward', __('Ward'))->sortable();
@@ -53,7 +54,8 @@ class UserController extends AdminController
         $show = new Show(User::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
+        $show->field('first_name', __('First name'));
+        $show->field('last_name', __('Last name'));
         $show->field('province', __('Province'));
         $show->field('district', __('District'));
         $show->field('ward', __('Ward'));
@@ -77,7 +79,8 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
-        $form->text('name', __('Name'));
+        $form->text('first_name', __('First name'));
+        $form->text('last_name', __('Last name'));
         $form->text('province', __('Province'));
         $form->text('district', __('District'));
         $form->text('ward', __('Ward'));

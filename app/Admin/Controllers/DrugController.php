@@ -113,7 +113,7 @@ class DrugController extends AdminController
         $form->date('HanSuDung', __('Expiry'))->default(date('Y-m-d'));
         $form->number('GiaNhap', __('Import price (vnd)'))->min(0);
         $form->number('GiaBan', __('Price (vnd)'))->min(0);
-        $form->decimal('ChietKhau', __('Discount (%)'))->default(0);
+        $form->number('ChietKhau', __('Discount (%)'))->default(0);
 // 
         $product_units = ProductUnit::get();
         $product_units_select = [];
