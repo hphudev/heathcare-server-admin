@@ -77,6 +77,9 @@ class TestController extends Controller
         $email = $request->email;
         $password = $request->password;
         $user = User::where([['email','=', $email], ['password', '=', $password]])->get();
-        return response()->json($user[0]);
+        if (count($user) > 0)
+            return response()->json($user[0]);
+        else 
+            return 'null';
     }
 }
