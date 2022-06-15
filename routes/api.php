@@ -38,3 +38,6 @@ Route::post('/unit/get-transport-unit', [TestController::class, 'getTransportUni
 Route::post('/bill/add-bill', [TestController::class, 'addBill']);
 Route::post('/bill/get-bills-for-user', [TestController::class, 'getBillsForUser']);
 Route::post('/bill/remove-bill-detailbill-shipping', [TestController::class, 'removeBillDetailbillShipping']);
+Route::post('/user/get-user-by-token', [TestController::class, 'getUserByToken']);
+Route::post('/user/update-token-user', [TestController::class, 'updateTokenUser']);
+Route::post('/user/update-user', [TestController::class, 'updateUser']);

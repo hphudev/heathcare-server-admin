@@ -117,7 +117,7 @@ class TestController extends Controller
             $user->email_verified_at = now();
             $user->password = $request->password;
             $user->save();
-            return 'success';
+            return response()->json($user);
         } catch (\Throwable $th) {
             //throw $th;
             return 'error';
@@ -277,5 +277,44 @@ class TestController extends Controller
         ->where('id', $request->bill_id)
         ->delete();
         return "success";
+    }
+    // 
+    static public function getUserByToken(Request $request) {
+        $email = $request->email;
+        $token = $request->token;
+        $user = User::where([['email', '=', $email], ['remember_token', '=', $token]])->get();
+        if (count($user) > 0)
+            return response()->json($user[0]);
+        else
+            return 'null';
+    }
+    // 
+    static public function updateTokenUser(Request $request) {
+        $email = $request->email;
+        $token = $request->token;
+        User::where('email', $email)->update(['remember_token' => $token]);
+        return "success";
+    }
+    // 
+    static public function updateUser(Request $request) {
+        try {
+            //code...
+            // $user = User::find($request->id);
+            // $user->first_name = $request->first_name;
+            // $user->last_name = $request->last_name;
+            // $user->province = $request->province;
+            // $user->district = $request->district;
+            // $user->ward = $request->ward;
+            // $user->detail_address = $request->detail_address;
+            // $user->email = $request->email;
+            // $user->email_verified_at = now();
+            // $user->password = $request->password;
+            // $user->update();
+            User::where('id', $request->id)->update($request->all());
+            return response()->json(User::find($request->id));
+        } catch (\Throwable $th) {
+            //throw $th;
+            return 'error';
+        }
     }
 }
