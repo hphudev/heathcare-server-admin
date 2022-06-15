@@ -95,7 +95,7 @@ class TestController extends Controller
     {
         $email = $request->email;
         $password = $request->password;
-        $user = User::where([['email', '=', $email], ['password', '=', $password]])->get();
+        $user = User::where([['email', '=', $email], ['password', '=', md5($password)]])->get();
         if (count($user) > 0)
             return response()->json($user[0]);
         else
@@ -115,7 +115,7 @@ class TestController extends Controller
             $user->detail_address = $request->detail_address;
             $user->email = $request->email;
             $user->email_verified_at = now();
-            $user->password = $request->password;
+            $user->password = md5($request->password);
             $user->save();
             return response()->json($user);
         } catch (\Throwable $th) {
@@ -299,18 +299,19 @@ class TestController extends Controller
     static public function updateUser(Request $request) {
         try {
             //code...
-            // $user = User::find($request->id);
-            // $user->first_name = $request->first_name;
-            // $user->last_name = $request->last_name;
-            // $user->province = $request->province;
-            // $user->district = $request->district;
-            // $user->ward = $request->ward;
-            // $user->detail_address = $request->detail_address;
-            // $user->email = $request->email;
-            // $user->email_verified_at = now();
-            // $user->password = $request->password;
-            // $user->update();
-            User::where('id', $request->id)->update($request->all());
+            $user = User::find($request->id);
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->province = $request->province;
+            $user->district = $request->district;
+            $user->ward = $request->ward;
+            $user->detail_address = $request->detail_address;
+            $user->email = $request->email;
+            $user->email_verified_at = now();
+            if ($user->password != $request->password)
+                $user->password = md5($request->password);
+            $user->update();
+            // User::where('id', $request->id)->update($request->all());
             return response()->json(User::find($request->id));
         } catch (\Throwable $th) {
             //throw $th;
