@@ -248,4 +248,34 @@ class TestController extends Controller
             return "error";
         }
     }
+    // 
+    static public function getBillsForUser(Request $request) {
+        $bills = DB::table('hoadon')
+                ->where('user_id', $request->user_id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        $result = [];
+        foreach($bills as $bill) {
+            $detail_bills = DB::table('cthd')
+                    ->selectRaw('cthd.*, thuoc.TenThuoc, thuoc.HinhAnh')
+                    ->join('thuoc', 'thuoc.id', '=', 'cthd.drug_id')
+                    ->where('bill_id', $bill->id)
+                    ->get();
+            array_push($result, ['bill' => $bill, 'detail_bills' => $detail_bills]);
+        }
+        return response()->json($result);
+    }
+    // 
+    static public function removeBillDetailbillShipping(Request $request) {
+        DB::table('vanchuyen')
+        ->where('bill_id', $request->bill_id)
+        ->delete();
+        DB::table('cthd')
+        ->where('bill_id', $request->bill_id)
+        ->delete();
+        DB::table('hoadon')
+        ->where('id', $request->bill_id)
+        ->delete();
+        return "success";
+    }
 }

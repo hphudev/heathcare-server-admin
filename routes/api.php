@@ -36,3 +36,5 @@ Route::post('/cart/get-cart', [TestController::class, 'getCart']);
 Route::post('/cart/remove-item-in-cart', [TestController::class, 'removeItemInCart']);
 Route::post('/unit/get-transport-unit', [TestController::class, 'getTransportUnit']);
 Route::post('/bill/add-bill', [TestController::class, 'addBill']);
+Route::post('/bill/get-bills-for-user', [TestController::class, 'getBillsForUser']);
+Route::post('/bill/remove-bill-detailbill-shipping', [TestController::class, 'removeBillDetailbillShipping']);
