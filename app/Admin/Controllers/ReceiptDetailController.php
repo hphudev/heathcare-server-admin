@@ -30,7 +30,9 @@ class ReceiptDetailController extends AdminController
         $grid->column('id', __('ID'));
         $grid->column('receipt_id', __('Receipt id'))->sortable();
         $grid->column('drug_id', __('Drug'))->director()->display(function ($drugid) {
-            return Drug::find($drugid)->TenThuoc;
+            $name = Drug::find($drugid);
+            $name = ($name == null) ? 'Not found' : $name->TenThuoc;
+            return $name;
         })->sortable(); 
         $grid->column('SoLuong', __('Number of drugs'))->display(function ($num) {
             $num = number_format($num, 0, '.', ',');

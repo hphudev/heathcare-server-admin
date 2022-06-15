@@ -31,3 +31,8 @@ Route::post('/drugs/get-top-four-new-drugs', [TestController::class, 'getTopFour
 Route::post('/user/get-user', [TestController::class, 'getUser']);
 Route::post('/user/register-account', [TestController::class, 'registerAccount']);
 Route::post('/drug/get-drug-by-id', [TestController::class, 'getDrugByID']);
+Route::post('/cart/add-item-to-cart', [TestController::class, 'addItemToCart']);
+Route::post('/cart/get-cart', [TestController::class, 'getCart']);
+Route::post('/cart/remove-item-in-cart', [TestController::class, 'removeItemInCart']);
+Route::post('/unit/get-transport-unit', [TestController::class, 'getTransportUnit']);
+Route::post('/bill/add-bill', [TestController::class, 'addBill']);
