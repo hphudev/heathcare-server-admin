@@ -83,7 +83,7 @@ class BillController extends AdminController
         $users = User::get();
         $users_asscociate = [];
         foreach ($users as $user) {
-            $users_asscociate += [$user->id => 'ID: ' . $user->id . ', Name: ' . $user->name];
+            $users_asscociate += [$user->id => 'ID: ' . $user->id . ', Name: ' . $user->first_name . ' ' . $user->last_name];
         }
         $form->select('user_id', __('Name'))->options($users_asscociate);
         $form->date('NgayThanhToan', __('Date of payment'))->default(date('Y-m-d'));
