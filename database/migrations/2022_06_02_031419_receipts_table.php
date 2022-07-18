@@ -14,7 +14,7 @@ class ReceiptsTable extends Migration
     public function up()
     {
         Schema::create('phieunhapkho', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->timestamps();
         });
     }

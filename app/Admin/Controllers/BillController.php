@@ -34,7 +34,7 @@ class BillController extends AdminController
         $grid = new Grid(new Bill());
 
         $grid->column('id', __('ID'))->sortable();
-        $grid->column('user_id', __('Name'))->display(function ($userid) {
+        $grid->column('user_id', trans('admin.name'))->display(function ($userid) {
             $user = User::find($userid);
             if  ($user !== null)
                 return $user->first_name . ' ' . $user->last_name;
